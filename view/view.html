@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>view</title>
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<button id="1">删除</button>
+		<button id="2">数据展示</button>
+		<button id="3">增加</button>
+		<button id="4">更新</button>
+	</body>
+
+</html>
+<script>
+	$('#1').click(function() {
+		$.post("http://localhost/phpapi/del.php", {
+				'TabName': "user", //传递表名
+				'Cont': " where id=1" ,//传递查询条件
+				//where前面那个位置一定要加个空格。
+			},
+			function(data) {
+				console.log(data);
+				t = data.length;
+				console.log(t)
+			}, "json");
+	});
+	$('#2').click(function() {
+		$.post("http://localhost/phpapi/list.php", {
+				'TabName': "user", //传递表名
+				'Cont': "" ,//传递查询条件
+				//where前面那个位置一定要加个空格。
+			},
+			function(data) {
+				console.log(data);
+				t = data.length;
+				console.log(t)
+			}, "json");
+	});
+	$('#3').click(function() {
+		$.post("http://localhost/phpapi/add.php", {
+				'TabName': "user", //传递表名
+				'Cont': "" ,//传递查询条件
+				'passWord': "222" ,
+				'userName': "111" ,
+				//where前面那个位置一定要加个空格。
+			},
+			function(data) {
+				console.log(data);
+				t = data.length;
+				console.log(t)
+			}, "json");
+	});
+	$('#4').click(function() {
+		$.post("http://localhost/phpapi/updata.php", {
+				'TabName': "user", //传递表名
+				'id': "2" ,//传递查询条件
+				'passWord': "222" ,
+				'userName': "111" ,
+				//where前面那个位置一定要加个空格。
+			},
+			function(data) {
+				console.log(data);
+				t = data.length;
+				console.log(t)
+			}, "json");
+	});
+</script>
